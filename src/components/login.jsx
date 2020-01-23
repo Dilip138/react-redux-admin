@@ -6,7 +6,6 @@ export default class login extends Component {
     this.state = {
       username: '',
       password: '',
-      submitted: false
     };
   }
 
@@ -23,6 +22,11 @@ export default class login extends Component {
     })
   }
   handleSubmit = () => {
+    let data = {
+      username: this.state.username,
+      password: this.state.password
+    }
+
 
   }
   render() {
