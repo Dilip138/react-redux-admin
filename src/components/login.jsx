@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { userActions } from '../actions/userActions';
 import TextField from '@material-ui/core/TextField';
-export default class login extends Component {
+function mapState(state) {
+  console.log("res in state",state);
+  return { state };
+}
+const actionCreator = {
+  login:userActions.login
+};
+class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +18,7 @@ export default class login extends Component {
     };
   }
 
-  handleChangeEmail = (event) => {
+  handleChangeUsername = (event) => {
     const username = event.target.value;
     this.setState({
       username: username
@@ -26,7 +35,8 @@ export default class login extends Component {
       username: this.state.username,
       password: this.state.password
     }
-
+    console.log("res in login data", data)
+    this.props.login(data)
 
   }
   render() {
@@ -41,7 +51,7 @@ export default class login extends Component {
               type="username"
               autoComplete="current-username"
               value={this.state.username}
-              onClick={this.handleChangeEmail}
+              onChange={this.handleChangeUsername}
               variant="outlined" />
           </div>
           <div className="fixed d-flex justify-content-center">
@@ -62,3 +72,6 @@ export default class login extends Component {
     );
   }
 }
+
+
+export default connect(mapState, actionCreator)(Admin);
