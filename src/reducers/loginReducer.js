@@ -1,11 +1,11 @@
-import userConstant from '../constants/userConstant';
+import { userConstant } from '../constants/userConstant';
 
-export function login(state = {}, action) {
+export function login (state = {}, action){
     switch (action.type) {
         case userConstant.LOGIN_SUCCESS:
             return {
                 loggedIn: true,
-                user: action.data
+                user: action.user
             };
         case userConstant.LOGIN_FAILURE:
             return {

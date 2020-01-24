@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import { userActions } from '../actions/userActions';
 import { createMuiTheme, MuiThemeProvider, Divider } from '@material-ui/core';
+import { connect } from 'react-redux';
 const theme = createMuiTheme({
     overrides: {
         MuiAppBar: {
@@ -11,11 +13,28 @@ const theme = createMuiTheme({
         },
     }
 })
-export default class DashBoard extends Component {
+function mapstate(state) {
+    console.log("res in state", state.adminReducer.user)
+    return {
+        user: state.adminReducer.user
+    };
+}
+const actionCreator = {
+    allData: userActions.allData
+}
+
+class DashBoard extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            getList: [],
+        }
+    }
+    componentDidMount() {
+        this.props.allData();
     }
     render() {
+        console.log("res in props", this.props.user);
         return (
             <div className="mainDashboard">
                 <MuiThemeProvider theme={theme}>
@@ -51,18 +70,25 @@ export default class DashBoard extends Component {
                                 <th scope="col">Service</th>
                             </tr>
                         </thead>
-                        {}
-                        <tbody>
-                            <tr>
-                                <td>akash</td>
-                                <td >soni</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                        </tbody>
+                        {this.props.user.map(key => {
+                            //console.log("res in key", key);
+                            return (
+                                <tbody>
+                                    <tr>
+                                        <td>{key.firstName}</td>
+                                        <td >{key.lastName}</td>
+                                        <td>{key.email}</td>
+                                        <td>{key.service}</td>
+                                    </tr>
+                                </tbody>
+                            )
+                        })
+                        }
+
                     </table>
                 </div>
             </div>
         );
     }
 }
+export default connect(mapstate, actionCreator)(DashBoard)

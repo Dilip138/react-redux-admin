@@ -74,5 +74,4 @@ class Admin extends Component {
   }
 }
 
-
-export default connect(mapState, actionCreator)(Admin);
+export default  connect(mapState, actionCreator)(Admin);

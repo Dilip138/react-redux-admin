@@ -18,6 +18,19 @@
   justify-content: space-between;
   min-width: 20em;
 }
-.allTable{
+
+.allTable {
   margin-top: 15px;
+}
+
+.user {
+  cursor: pointer;
+}
+
+.qAndAns {
+  cursor: pointer;
+}
+
+.logOut {
+  cursor: pointer;
 }

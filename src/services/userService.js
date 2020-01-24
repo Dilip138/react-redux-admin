@@ -11,7 +11,7 @@ export function login(data) {
 }
 
 export function allData() {
-    return axios.get("http://fundoonotes.incubation.bridgelabz.com/api/productcarts/userCartList", {
+    return axios.get("http://fundoonotes.incubation.bridgelabz.com/api/user/getAdminUserList", {
         headers: {
             Authorization: localStorage.getItem('token')
         }

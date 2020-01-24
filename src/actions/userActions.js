@@ -9,6 +9,7 @@ export const userActions = {
 function login(data) {
     return dispatch => {
         userService.login(data).then(res => {
+            //console.log("res oin login ",res);            
             dispatch(success(res));
             window.location.href = '/dashBoardComponent';
             localStorage.setItem("token",res.data.id)
@@ -25,7 +26,9 @@ function login(data) {
 function allData() {
     return dispatch => {
         userService.allData().then(res => {
-            dispatch(success(res));
+            //console.log("res in data",res.data.data.data)
+            let adminData=res.data.data.data;
+            dispatch(success(adminData));
         },
             error => {
                 dispatch(failure(error.toString()));
