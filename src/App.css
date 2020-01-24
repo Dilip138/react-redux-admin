@@ -1,6 +1,23 @@
 .mainLogin {
   margin-top: 6%;
 }
-.fixed{
+
+.fixed {
   margin-top: 2.5%;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  width: 77em;
+}
+
+.allName {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 20em;
+}
+.allTable{
+  margin-top: 15px;
 }
