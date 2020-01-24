@@ -37,6 +37,7 @@ class Admin extends Component {
     }
     console.log("res in login data", data)
     this.props.login(data)
+    localStorage.setItem("username",this.state.username)
 
   }
   render() {

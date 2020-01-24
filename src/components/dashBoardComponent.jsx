@@ -11,7 +11,6 @@ const theme = createMuiTheme({
         },
     }
 })
-
 export default class DashBoard extends Component {
     constructor(props) {
         super(props)
@@ -42,7 +41,7 @@ export default class DashBoard extends Component {
                     </AppBar>
                 </MuiThemeProvider>
                 <div className="allTable">
-                    <Divider style={{backgroundColor:'blue'}} />
+                    <Divider style={{ backgroundColor: 'blue' }} />
                     <table class="table">
                         <thead>
                             <tr>
@@ -52,6 +51,7 @@ export default class DashBoard extends Component {
                                 <th scope="col">Service</th>
                             </tr>
                         </thead>
+                        {}
                         <tbody>
                             <tr>
                                 <td>akash</td>
