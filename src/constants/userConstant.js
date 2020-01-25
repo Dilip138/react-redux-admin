@@ -4,4 +4,6 @@ export const userConstants = {
 
     GETALL_SUCCESS: 'USERS_GETALL_SUCCESS',
     GETALL_FAILURE: 'USERS_GETALL_FAILURE',
+
+    LOGOUT: 'USERS_LOGOUT',
 }

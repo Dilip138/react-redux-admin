@@ -3,6 +3,7 @@ import axios from 'axios';
 export const userService = {
     login,
     allData,
+    logout
 }
 
 export function login(data) {
@@ -24,4 +25,8 @@ export function getQues() {
             Authorization: localStorage.getItem('token')
         }
     })
+}
+function logout() {
+    // remove user from local storage to log user out
+    localStorage.clear();
 }

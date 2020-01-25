@@ -45,6 +45,23 @@ export default class ApproveQuestion extends Component {
             </Toolbar>
           </AppBar>
         </MuiThemeProvider>
+        <div className="table-responsive">
+          <table className="table table-bordered">
+            <thead>
+              <tr align='center'>
+                <th rowSpan="2">QuestionList</th>
+                <th colspan="2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>dilip</td>
+                <td>akash</td>
+                <td>bikash</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

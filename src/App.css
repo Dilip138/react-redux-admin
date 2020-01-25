@@ -41,3 +41,8 @@
   cursor: pointer;
   color: black;
 }
+.table-responsive{
+  width: 65%;
+  margin-left: 16%;
+  margin-top: 2.5em;
+}

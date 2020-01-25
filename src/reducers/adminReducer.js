@@ -11,6 +11,11 @@ export default (state = { user: [] }, action) => {
             return {
                 loading: false,
             }
+        case userConstants.LOGOUT:
+            return {
+                loggedIn: false
+            }
+
         default:
             return state
     }

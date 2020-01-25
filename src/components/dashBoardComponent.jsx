@@ -20,7 +20,8 @@ function mapstate(state) {
     };
 }
 const actionCreator = {
-    allData: userActions.allData
+    allData: userActions.allData,
+    logout: userActions.logout
 }
 
 class DashBoard extends Component {
@@ -35,6 +36,10 @@ class DashBoard extends Component {
     }
     handleQandAns = () => {
         this.props.history.push('/ApproveQandAns')
+    }
+    handleLogOut = () => {
+        this.props.logout()
+        this.props.history.push('/')
     }
     render() {
         //console.log("res in props", this.props.user);
@@ -55,7 +60,7 @@ class DashBoard extends Component {
                                         Q&A
                             </div>
                                 </div>
-                                <div className="logOut">
+                                <div className="logOut" onClick={this.handleLogOut} >
                                     logOut
                         </div>
                             </div>
@@ -64,7 +69,7 @@ class DashBoard extends Component {
                 </MuiThemeProvider>
                 <div className="allTable">
                     <Divider style={{ backgroundColor: 'blue' }} />
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">FirstName</th>

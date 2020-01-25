@@ -4,6 +4,7 @@ import { userService } from '../services/userService';
 export const userActions = {
     login,
     allData,
+    logout,
 }
 
 function login(data) {
@@ -12,7 +13,7 @@ function login(data) {
             //console.log("res oin login ",res);            
             dispatch(success(res));
             window.location.href = '/dashBoardComponent';
-            localStorage.setItem("token",res.data.id)
+            localStorage.setItem("token", res.data.id)
         },
             error => {
                 dispatch(failure(error.toString()));
@@ -27,7 +28,7 @@ function allData() {
     return dispatch => {
         userService.allData().then(res => {
             //console.log("res in data",res.data.data.data)
-            let adminData=res.data.data.data;
+            let adminData = res.data.data.data;
             dispatch(success(adminData));
         },
             error => {
@@ -37,4 +38,9 @@ function allData() {
     }
     function success(user) { return { type: userConstants.GETALL_SUCCESS, user } }
     function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
+}
+
+function logout() {
+    userService.logout();
+    return { type: userConstants.LOGOUT };
 }
