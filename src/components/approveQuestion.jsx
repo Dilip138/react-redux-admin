@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { createMuiTheme, MuiThemeProvider, Divider } from '@material-ui/core';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { connect } from 'react-redux';
+import {userActions} from '../actions/userActions';
 const theme = createMuiTheme({
   overrides: {
     MuiAppBar: {
@@ -12,8 +13,15 @@ const theme = createMuiTheme({
     },
   }
 })
+function mapstate(state) {
+  return { state }
+}
 
-export default class ApproveQuestion extends Component {
+const actionCreators = {
+  getQues:userActions.getQues
+}
+
+class ApproveQuestion extends Component {
   constructor(props) {
     super(props)
   }
@@ -66,3 +74,4 @@ export default class ApproveQuestion extends Component {
     );
   }
 }
+export default connect(mapstate, actionCreators)(ApproveQuestion)

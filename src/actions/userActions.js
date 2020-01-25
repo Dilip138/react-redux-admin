@@ -5,6 +5,7 @@ export const userActions = {
     login,
     allData,
     logout,
+    getQues,
 }
 
 function login(data) {
@@ -33,6 +34,20 @@ function allData() {
         },
             error => {
                 dispatch(failure(error.toString()));
+            }
+        )
+    }
+    function success(user) { return { type: userConstants.GETALL_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
+}
+
+function getQues() {
+    return dispatch => {
+        userService.getQues().then(res => {
+            dispatch(success(res))
+        },
+            error => {
+                dispatch(failure(error))
             }
         )
     }
