@@ -17,3 +17,11 @@ export function allData() {
         }
     })
 }
+
+export function getQues() {
+    return axios.get("http://fundoonotes.incubation.bridgelabz.com/api/questionAndAnswerNotes/getUnApprovedAnswer", {
+        headers: {
+            Authorization: localStorage.getItem('token')
+        }
+    })
+}

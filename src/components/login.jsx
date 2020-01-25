@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { userActions } from '../actions/userActions';
 import TextField from '@material-ui/core/TextField';
 function mapState(state) {
-  console.log("res in state",state);
+  console.log("res in state", state);
   return { state };
 }
 const actionCreator = {
-  login:userActions.login
+  login: userActions.login
 };
 class Admin extends Component {
   constructor(props) {
@@ -37,8 +37,7 @@ class Admin extends Component {
     }
     console.log("res in login data", data)
     this.props.login(data)
-    localStorage.setItem("username",this.state.username)
-
+    localStorage.setItem("username", this.state.username)
   }
   render() {
     return (
@@ -74,4 +73,4 @@ class Admin extends Component {
   }
 }
 
-export default  connect(mapState, actionCreator)(Admin);
+export default connect(mapState, actionCreator)(Admin);

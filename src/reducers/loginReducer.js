@@ -1,6 +1,6 @@
 import { userConstant } from '../constants/userConstant';
 
-export function login (state = {}, action){
+export function login (state = {user:[]}, action){
     switch (action.type) {
         case userConstant.LOGIN_SUCCESS:
             return {

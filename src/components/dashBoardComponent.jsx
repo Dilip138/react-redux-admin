@@ -33,8 +33,11 @@ class DashBoard extends Component {
     componentDidMount() {
         this.props.allData();
     }
+    handleQandAns = () => {
+        this.props.history.push('/ApproveQandAns')
+    }
     render() {
-        console.log("res in props", this.props.user);
+        //console.log("res in props", this.props.user);
         return (
             <div className="mainDashboard">
                 <MuiThemeProvider theme={theme}>
@@ -48,7 +51,7 @@ class DashBoard extends Component {
                                     <div className="user">
                                         user
                             </div>
-                                    <div className="qAndAns">
+                                    <div className="qAndAns" onClick={this.handleQandAns}>
                                         Q&A
                             </div>
                                 </div>

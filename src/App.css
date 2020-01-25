@@ -23,14 +23,21 @@
   margin-top: 15px;
 }
 
+.admin {
+  color: black;
+}
+
 .user {
   cursor: pointer;
+  color: black;
 }
 
 .qAndAns {
   cursor: pointer;
+  color: black;
 }
 
 .logOut {
   cursor: pointer;
+  color: black;
 }
