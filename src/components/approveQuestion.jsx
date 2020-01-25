@@ -3,7 +3,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { connect } from 'react-redux';
-import {userActions} from '../actions/userActions';
+import { userActions } from '../actions/userActions';
+import { getQues } from '../services/userService';
 const theme = createMuiTheme({
   overrides: {
     MuiAppBar: {
@@ -14,21 +15,57 @@ const theme = createMuiTheme({
   }
 })
 function mapstate(state) {
-  return { state }
+  console.log("res in stateApproved", state.approvedQuesReducer.user)
+  return {
+    ques: state.approvedQuesReducer.user
+  }
+
 }
 
 const actionCreators = {
-  getQues:userActions.getQues
+  getQues: userActions.getQues
 }
 
 class ApproveQuestion extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      getAllQues: [],
+    }
+  }
+  componentDidMount() {
+    //this.props.getQues()
+    this.getQuestion()
   }
   handleDashBoard = () => {
     this.props.history.push('/dashBoardComponent')
   }
+  getQuestion = () => {
+    getQues().then(res => {
+      console.log("res in allQuesData", res);
+      this.setState({
+        getAllQues: res.data.data
+      })
+      console.log("res in allQuesData", this.state.getAllQues);
+    })
+
+  }
   render() {
+    // console.log("res in getQues", this.props.ques)
+    // let allData = this.props.ques.map(data => {
+    //   console.log("log of key",data);
+      
+    //   return (
+    //     <tbody>
+    //       <tr>
+    //         <td>{data.message}</td>
+    //         <td>Approved</td>
+    //         <td>Reject</td>
+    //       </tr>
+    //     </tbody>
+
+    //   )
+    // })
     return (
       <div className="mainDashboard">
         <MuiThemeProvider theme={theme}>
@@ -61,13 +98,20 @@ class ApproveQuestion extends Component {
                 <th colspan="2">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>dilip</td>
-                <td>akash</td>
-                <td>bikash</td>
-              </tr>
-            </tbody>
+            {this.state.getAllQues.map(key => {
+              console.log("res in key",key)
+              return (
+                <tbody>
+                  <tr>
+                    <td>{key.message}</td>
+                    <td>Approved</td>
+                    <td>Reject</td>
+                  </tr>
+                </tbody>
+              )
+            })
+            }
+            {/* {allData} */}
           </table>
         </div>
       </div>

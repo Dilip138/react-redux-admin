@@ -44,15 +44,18 @@ function allData() {
 function getQues() {
     return dispatch => {
         userService.getQues().then(res => {
-            dispatch(success(res))
+            console.log("res in data", res.data.data)
+            
+            let quesData = res.data.data;
+            dispatch(success(quesData));
         },
             error => {
-                dispatch(failure(error))
+                dispatch(failure(error.toString()))
             }
         )
     }
-    function success(user) { return { type: userConstants.GETALL_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
+    function success(user) { return { type: userConstants.GETALLQUESTION_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.GETALLQUESTION_FAILURE, error } }
 }
 
 function logout() {
