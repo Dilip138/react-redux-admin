@@ -4,7 +4,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { userActions } from '../actions/userActions';
-import { getQues } from '../services/userService';
 const theme = createMuiTheme({
   overrides: {
     MuiAppBar: {
@@ -34,38 +33,24 @@ class ApproveQuestion extends Component {
     }
   }
   componentDidMount() {
-    //this.props.getQues()
-    this.getQuestion()
+    this.props.getQues()
+    //this.getQuestion()
   }
   handleDashBoard = () => {
     this.props.history.push('/dashBoardComponent')
   }
-  getQuestion = () => {
-    getQues().then(res => {
-      console.log("res in allQuesData", res);
-      this.setState({
-        getAllQues: res.data.data
-      })
-      console.log("res in allQuesData", this.state.getAllQues);
-    })
+  // getQuestion = () => {
+  //   getQues().then(res => {
+  //     console.log("res in allQuesData", res);
+  //     this.setState({
+  //       getAllQues: res.data.data
+  //     })
+  //     console.log("res in allQuesData", this.state.getAllQues);
+  //   })
 
-  }
+  // }
   render() {
-    // console.log("res in getQues", this.props.ques)
-    // let allData = this.props.ques.map(data => {
-    //   console.log("log of key",data);
-      
-    //   return (
-    //     <tbody>
-    //       <tr>
-    //         <td>{data.message}</td>
-    //         <td>Approved</td>
-    //         <td>Reject</td>
-    //       </tr>
-    //     </tbody>
-
-    //   )
-    // })
+    console.log("res i  ques all", this.props.ques)
     return (
       <div className="mainDashboard">
         <MuiThemeProvider theme={theme}>
@@ -98,20 +83,19 @@ class ApproveQuestion extends Component {
                 <th colspan="2">Action</th>
               </tr>
             </thead>
-            {this.state.getAllQues.map(key => {
-              console.log("res in key",key)
-              return (
+            {/* {this.props.ques.map(key => {
+              console.log("res in key", key)
+              return ( */}
                 <tbody>
                   <tr>
-                    <td>{key.message}</td>
+                    <td>message</td>
                     <td>Approved</td>
                     <td>Reject</td>
                   </tr>
                 </tbody>
-              )
+              {/* )
             })
-            }
-            {/* {allData} */}
+            } */}
           </table>
         </div>
       </div>

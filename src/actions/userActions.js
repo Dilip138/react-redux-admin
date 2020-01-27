@@ -45,7 +45,6 @@ function getQues() {
     return dispatch => {
         userService.getQues().then(res => {
             console.log("res in data", res.data.data)
-            
             let quesData = res.data.data;
             dispatch(success(quesData));
         },

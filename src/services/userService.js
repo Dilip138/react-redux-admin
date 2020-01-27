@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiConstant from '../apiConstants/apiConstant';
 
 export const userService = {
     login,
@@ -9,11 +10,11 @@ export const userService = {
 
 export function login(data) {
     console.log("res in login services", data);
-    return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/adminLogin", data)
+    return axios.post(process.env.REACT_APP_BASE_URL + apiConstant.login, data)
 }
 
 export function allData() {
-    return axios.get("http://fundoonotes.incubation.bridgelabz.com/api/user/getAdminUserList", {
+    return axios.get(process.env.REACT_APP_BASE_URL + apiConstant.getAdminUserList, {
         headers: {
             Authorization: localStorage.getItem('token')
         }
@@ -21,7 +22,7 @@ export function allData() {
 }
 
 export function getQues() {
-    return axios.get("http://fundoonotes.incubation.bridgelabz.com/api/questionAndAnswerNotes/getUnApprovedAnswer", {
+    return axios.get(process.env.REACT_APP_BASE_URL + apiConstant.getUnApprovedQuestion, {
         headers: {
             Authorization: localStorage.getItem('token')
         }
