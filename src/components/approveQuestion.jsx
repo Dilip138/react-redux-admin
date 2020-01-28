@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { userActions } from '../actions/userActions';
+import { getQues } from '../services/userService';
 const theme = createMuiTheme({
   overrides: {
     MuiAppBar: {
@@ -14,12 +15,11 @@ const theme = createMuiTheme({
   }
 })
 function mapstate(state) {
-  console.log("res in stateApproved", state.approvedQuesReducer.ques) 
+  console.log("res in stateApproved", state.approvedQuesReducer.ques)
   return {
-    status:state.approvedQuesReducer.ques
+    status: state.approvedQuesReducer.ques
   }
 }
-
 const actionCreators = {
   getQues: userActions.getQues
 }
@@ -32,24 +32,24 @@ class ApproveQuestion extends Component {
     }
   }
   componentDidMount() {
-    this.props.getQues()
-    //this.getQuestion()
+    // this.props.getQues()
+    this.getQuestion()
   }
   handleDashBoard = () => {
     this.props.history.push('/dashBoardComponent')
   }
-  // getQuestion = () => {
-  //   getQues().then(res => {
-  //     console.log("res in allQuesData", res);
-  //     this.setState({
-  //       getAllQues: res.data.data
-  //     })
-  //     console.log("res in allQuesData", this.state.getAllQues);
-  //   })
+  getQuestion = () => {
+    getQues().then(res => {
+      console.log("res in allQuesData", res);
+      this.setState({
+        getAllQues: res.data.data
+      })
+      console.log("res in allQuesData", this.state.getAllQues);
+    })
 
-  // }
+  }
   render() {
-    console.log("res in  ques all ==> ",this.props.status)
+    console.log("res in  ques all ==> ", this.props.status)
     return (
       <div className="mainDashboard">
         <MuiThemeProvider theme={theme}>
@@ -78,23 +78,23 @@ class ApproveQuestion extends Component {
           <table className="table table-bordered">
             <thead>
               <tr align='center'>
-                <th rowSpan="2">QuestionList</th>
+                <th>QuestionList</th>
                 <th colspan="2">Action</th>
               </tr>
             </thead>
-            {/* {this.props.ques.map(key => {
+            {this.state.getAllQues.map(key => {
               console.log("res in key", key)
-              return ( */}
-            <tbody>
-              <tr>
-                <td>message</td>
-                <td>Approved</td>
-                <td>Reject</td>
-              </tr>
-            </tbody>
-            {/* )
+              return (
+                <tbody>
+                  <tr>
+                    <td><div dangerouslySetInnerHTML={{ __html: key.message }}></div></td>
+                    <td>Approved</td>
+                    <td>Reject</td>
+                  </tr>
+                </tbody>
+              )
             })
-            } */}
+            }
           </table>
         </div>
       </div>
