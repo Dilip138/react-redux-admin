@@ -1,11 +1,13 @@
 import { userConstants } from '../constants/userConstant';
 
-export default (state = { user: [] }, action) => {
+export default (state = { ques: [] }, action) => {
+    console.log("action",action);
+    
     switch (action.type) {
         case userConstants.GETALLQUESTION_SUCCESS:
             return {
                 loading: true,
-                user: action.user
+                ques: action.user
             }
         case userConstants.GETALLQUESTION_FAILURE:
             return {

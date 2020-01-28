@@ -14,11 +14,10 @@ const theme = createMuiTheme({
   }
 })
 function mapstate(state) {
-  console.log("res in stateApproved", state.approvedQuesReducer.user)
+  console.log("res in stateApproved", state.approvedQuesReducer.ques) 
   return {
-    ques: state.approvedQuesReducer.user
+    status:state.approvedQuesReducer.ques
   }
-
 }
 
 const actionCreators = {
@@ -50,7 +49,7 @@ class ApproveQuestion extends Component {
 
   // }
   render() {
-    console.log("res i  ques all", this.props.ques)
+    console.log("res in  ques all ==> ",this.props.status)
     return (
       <div className="mainDashboard">
         <MuiThemeProvider theme={theme}>
@@ -64,7 +63,7 @@ class ApproveQuestion extends Component {
                   <div className="user" onClick={this.handleDashBoard}>
                     user
                   </div>
-                  <div className="qAndAns" onClick={this.handleQandAns}>
+                  <div className="qAndAns">
                     Q&A
                   </div>
                 </div>
@@ -86,14 +85,14 @@ class ApproveQuestion extends Component {
             {/* {this.props.ques.map(key => {
               console.log("res in key", key)
               return ( */}
-                <tbody>
-                  <tr>
-                    <td>message</td>
-                    <td>Approved</td>
-                    <td>Reject</td>
-                  </tr>
-                </tbody>
-              {/* )
+            <tbody>
+              <tr>
+                <td>message</td>
+                <td>Approved</td>
+                <td>Reject</td>
+              </tr>
+            </tbody>
+            {/* )
             })
             } */}
           </table>
